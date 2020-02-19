@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<project name="funkj-dev" default="help" basedir="." xmlns:x="antlib:net.sourceforge.funkj" xmlns:bj="antlib:org.bidji.taskdefs">
+
+	<property environment="myenv" />
+
+	<!-- HELP -->
+	<target name="help" description="Print help">
+		<echo message="Usage: ant [target] [-Dproperties=path...]" />
+		<echo message="" />
+		<echo message="targets :" />
+		<echo message="> ant format" />
+		<echo message="  format code" />
+	</target>
+
+	<path id="jasper-classpath">
+		<pathelement location="target/classes"/>
+        <pathelement location="target/components"/>
+		<pathelement location="ext/fonts"/>
+		<!--
+		<pathelement location="/home/ben/.m2/repository/commons-digester/commons-digester/2.1/commons-digester-2.1.jar"/>
+		-->
+		<pathelement location="/home/ben/.m2/repository/org/apache/commons/commons-digester3/3.2/commons-digester3-3.2.jar"/>
+		
+
+
+		<!-- <path refid="project-classpath"/>-->
+	</path>
+	<target name="jasper-compile" >
+		<mkdir dir="build/reports"/> 
+		<taskdef name="jrc" classname="net.sf.jasperreports.ant.JRAntCompileTask"> 
+			<classpath refid="jasper-classpath"/>
+		</taskdef>
+		<jrc 
+			destdir="build/reports"
+			tempdir="build/reports"
+			keepjava="false">
+			<src>
+				<fileset dir="reports">
+					<include name="**/*.jrxml"/>
+				</fileset>
+			</src>
+			<classpath refid="jasper-classpath"/>
+		</jrc>
+		<!--
+		<copy todir="${sample.dir}/build/reports">
+			<fileset dir="${sample.dir}/reports">
+				<exclude name="**/*.jrxml"/>
+			</fileset>
+		</copy>
+	-->
+	</target>
+
+	<target name="format">
+		<property name="bidji.keepTempFiles" value="false"/>
+		<delete dir="tmp/format"/>
+		<bj:txtt todir="tmp/format" overwrite="true" preservepath="true">
+
+			<fileset dir="src/java/com/bidjisoft/funkj">
+    			<include name="**/*.java"/>
+			</fileset>
+			<template><![CDATA[[#foreach line in txt?api.lines()]
+${line?api.preserve_tabs_and_white_spaces()}
+[/#foreach]
+]]>			
+			</template>
+		</bj:txtt>
+		<copy todir="src/java/com/bidjisoft/funkj" overwrite="true">
+		  <fileset dir="tmp/format">
+		    <include name="**/*.java"/>
+		  </fileset>
+		</copy>
+	</target>
+
+	<target name="loggize">
+		<delete dir="tmp/loggize"/>
+		<mkdir dir="tmp/loggize"/>
+		<delete dir="tmp/lib"/>
+		<mkdir dir="tmp/lib"/>
+		<copy todir="tmp/lib" overwrite="true">
+			<fileset dir="target" includes="funkj-*-jar-with-dependencies.jar"/>
+		</copy>
+		<x:spoon todir="tmp/loggize/dev/src/java" overwrite="true" classpath="tmp/lib" compile="false">
+			<parameter name="processor" value="LogProcessor"/>
+			<parameter name="begin" value='net.sourceforge.funkj.Logger.debug("[class %s] entering method: %s (" + (usedMemoryAtBeginning / 1000) + "kB)"); // generated log by spoon'/>
+			<parameter name="end" value='net.sourceforge.funkj.Logger.debug("[class %s] exiting method: %s (" + (usedMemoryAtEnd / 1000) + "kB - " + elapsedTime + "ms)"); // generated log by spoon'/>			
+			<fileset dir="src/java">
+				<include name="com/bidjisoft/funkj/*.java"/>
+    			<include name="com/bidjisoft/funkj/**/*.java"/>
+    			<exclude name="**/JavAstTask.java"/>
+    			<exclude name="**/XmlTask.java"/>
+    			<exclude name="**/*.bak"/>
+			</fileset>
+		</x:spoon>
+		<copy todir="tmp/loggize/dev">
+			<fileset dir=".">
+				<include name="bin/deploy.sh"/>
+				<include name="bin/compile.sh"/>
+				<include name="pom.xml"/>
+				<include name="src/java/**/*.xml"/>
+				<include name="src/java/**/*.properties"/>
+			</fileset>
+		</copy>
+		<copy file="../funkj.properties" todir="tmp/loggize" overwrite="true"/>
+		<copy file="tmp/antlib.xml" todir="tmp/loggize/dev/src/java" overwrite="true"/>
+		<copy file="tmp/antlib.xml" todir="tmp/loggize/dev/src/java/com/bidjisoft/funkj" overwrite="true"/>
+		<delete file="tmp/loggize/dev/src/java/com/bidjisoft/funkj/taskdefs/java/JavAstTask.java"/>
+	</target>
+
+	<target name="tmp">
+		<echo file="tmp/tmp.txt"/>
+		<x:append content="x:append" tofile="tmp/tmp.txt"/>
+	</target>
+
+</project>
+
