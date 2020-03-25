@@ -1,2 +1,2 @@
 # funkj
-java functional kit 
+functional java kit 

@@ -18,23 +18,18 @@
  *  limitations under the License.
  *
  */
-package com.bidjisoft.funkj;
-
-import static org.junit.Assert.assertTrue;
+package com.bidjisoft.funkj.fn.docbook;
 
 import java.io.File;
+import java.util.function.UnaryOperator;
 
+public class Docbook2XhtmlOperator implements UnaryOperator<File> {
 
-import org.apache.commons.io.FileUtils;
-
-import com.bidjisoft.funkj.monads.Pdf;
-
-public class Main {
-
-	public static void main(String[] args) {
-		final File docbookXml = FileUtils.getFile("src","test", "resources", "docbook", "example1.xml");
-		Pdf<File> pdf = Funk.docbook2pdf(docbookXml);
-		assertTrue(pdf.isPresent());		
-		System.out.println("docbook2pdf => " + pdf.get().getAbsolutePath());
+	@Override
+	public File apply(File docbookXml) {
+		DocbookOperator docbookTransformer = new DocbookOperator();
+		String userPath = System.getProperty("user.home");
+		return docbookTransformer.apply(docbookXml, new File(userPath + File.separator + ".ant4docbook" + File.separator + "docbook-xslt2-2.4.3/xslt/base/pipelines/db2html.xpl"));
 	}
+
 }

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book>
+	<title>Example 1</title>
+    
+    <bookinfo>
+    	<legalnotice>
+    		<!-- <title>legal notice</title> -->
+    		<para>
+    			Bidji is free software: you can redistribute it and/or modify
+     			it under the terms of the GNU General Public License as published by
+     			the Free Software Foundation, either version 3 of the License, or
+     			(at your option) any later version.
+     			<sbr/>
+     			Bidji is distributed in the hope that it will be useful,
+     			but WITHOUT ANY WARRANTY; without even the implied warranty of
+     			MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     			GNU General Public License for more details.
+     			<sbr/>
+     			You should have received a copy of the GNU General Public License
+     			along with Bidji.  If not, see <ulink url="http://www.gnu.org/licenses">www.gnu.org/licenses</ulink>			
+    		</para>
+    	</legalnotice>
+
+    	<copyright>
+    		<year>2015</year>
+    		<holder>Benjamin de Dardel</holder>
+    	</copyright>
+    
+    	  <!-- 
+    	<date>2017/07/10</date>
+        -->
+         
+    	<releaseinfo>
+    		V0.5.0
+    	</releaseinfo>
+        
+          
+    	<productname>
+    		Bijdi
+    	</productname>
+    
+    	<productnumber>
+    		BIDJI_USR_MAN
+    	</productnumber>
+       
+    	<authorgroup>
+    		<author>
+    			<personname>
+    				<firstname>Benjamin</firstname>
+    				<surname>de Dardel</surname>
+    			</personname>
+    			<affiliation>
+    				<orgname>Bidji Project</orgname>
+    				<address>
+    					<email>bdedardel[_@t_]users.sourceforge.net</email>
+    				</address>
+    				<jobtitle>Project leader</jobtitle>
+    			</affiliation>
+    		</author>
+    	</authorgroup>
+     
+    	<mediaobject>
+    		<imageobject>
+    			<imagedata fileref="file:///mnt/perso/Development/funkj/dev/images/logo.png" align="center"
+    				width="600" scalefit="1" format="PNG" />
+    		</imageobject>
+    	</mediaobject>
+    
+    	<revhistory>
+    		<revision>
+    			<revnumber>0.1</revnumber>
+                <!--  
+    			<date>2012-12-01</date>
+    			-->
+                <revdescription>code generation with bidjic ant task
+    			</revdescription>
+    			<author>
+    				<personname>
+    					<firstname>Benjamin</firstname>
+    					<surname>de Dardel</surname>
+    				</personname>
+    			</author>
+    		</revision>
+    		
+    	</revhistory>
+        
+    </bookinfo>
+    
+    <chapter>
+        <title>Chapter</title>
+    
+	<para>
+		BEGINNING OF THE DOCUMENT
+		<sbr/>
+		This book aims to show how to write : 
+		<itemizedlist>
+			<listitem>emphasis - bold - strikethrough and underline items</listitem>
+			<listitem>itemized lists</listitem>
+			<listitem>ordered lists</listitem>
+		</itemizedlist>
+	</para>
+
+	<section>
+		<title>Section 1</title>
+
+		<para>
+			content <emphasis role="todo">of</emphasis> <emphasis role="orange">section1</emphasis>
+		</para>
+
+	
+		<para>
+			<emphasis>Em</emphasis><emphasis>pha</emphasis><emphasis>sis1</emphasis>
+			<emphasis>Emphasis2 Emphasis3</emphasis>
+			<sbr/>
+			<emphasis role="bold">Bold1</emphasis>
+			<sbr/>
+			<emphasis role="strikethrough">Strikethrough1</emphasis>
+			<sbr/>
+			<emphasis role="underline">Underline1</emphasis>
+		</para>
+	
+		
+		<para>
+			All this paragraph must not have EOL between AAA and III.
+			<sbr/>
+			AAA 
+			<emphasis>Emphasis1</emphasis> 
+			BBB 
+			<emphasis>Emphasis2 and 3</emphasis>
+			CCC
+			<emphasis role="bold">Bold1</emphasis>
+			DDD
+			<emphasis role="bold">Bold2 and 3</emphasis>
+			EEE
+			<emphasis role="strikethrough">Strikethrough1</emphasis>
+			FFF
+			<emphasis role="strikethrough">Strikethrough2 and 3</emphasis>
+			GGG
+			<emphasis role="underline">Underline1</emphasis>
+			HHH
+			<emphasis role="underline">Underline2 and 3</emphasis>
+			III.
+			<sbr/>
+			End of paragraph.		
+		</para>
+
+		<section>
+			<title>Section 1.1</title>
+			<para>
+				content of section 1.1 with <ulink url="urlofulink">ulink</ulink>
+			</para>
+			
+			<para>
+				program listing :
+				<programlisting>
+<![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<book xml:lang="en" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>My first docbook book</title>
+	<section id="section1">
+		<title>Section level 1</title>
+		<para>
+			write your documentation
+		</para>
+	</section>
+</book>]]></programlisting>
+			</para>
+		</section>
+
+	</section>
+
+	<section>
+		<title>Section 2</title>
+
+		<para>
+			Bullet list :
+			<itemizedlist>
+				<listitem>item 1</listitem>
+				<listitem>item 2 and <emphasis>much more</emphasis>...</listitem>
+				<listitem>
+					<emphasis>item 3</emphasis> and more...
+				</listitem>
+				<listitem><emphasis role="bold">item 4</emphasis> and more...</listitem>
+				<listitem><emphasis role="orange">item 5</emphasis> and more...</listitem>
+				<listitem>item 6
+					<para>
+						details of item 6 !
+					</para>
+				</listitem>
+				<listitem>item 7
+					<sbr/>
+					listitem with ulink : [<ulink url="urlofulink">linkcontent</ulink>]
+				</listitem>
+			</itemizedlist>
+		</para>
+
+		<para>
+			Ordered list :
+			<orderedlist>
+				<listitem>item1</listitem>
+				<listitem>item2</listitem>
+				<listitem>item3</listitem>
+			</orderedlist>
+		</para>
+
+	</section>
+	
+	<section>
+		<title>Section 3</title>
+
+		<para>
+			Figures :			
+		</para>
+		
+		<para>
+			<figure>
+				<title>set width="450" on big image</title>
+				<mediaobject>
+					<imageobject>
+						<!-- PNG / KO with docx
+						<imagedata align="center" width="450" scalefit="1" fileref="file:///mnt/perso/Development/funkj/dev/images/example1.png" format="PNG"/>
+						<imagedata align="center" width="450" scalefit="1" fileref="file:///mnt/perso/Development/funkj/dev/images/example1.jpg" format="JPG"/>
+						-->
+						<!--  OK ? 
+						<imagedata align="center" width="450" scalefit="1" fileref="file:///mnt/perso/Development/funkj/dev/images/example1.bmp" format="BMP"/>
+						-->
+						<imagedata align="center" width="450" scalefit="1" fileref="file:///mnt/perso/Development/funkj/dev/images/image-01.png" format="PNG"/>
+					</imageobject>
+				</mediaobject>
+			</figure>
+		</para>
+		
+		<para>
+			<figure>
+				<title>set width="450" on small image</title>
+				<mediaobject>
+					<imageobject>
+						<!-- PNG / KO with docx
+						<imagedata align="center" width="450" scalefit="1" fileref="file:///mnt/perso/Development/funkj/dev/images/example1.png" format="PNG"/>
+						<imagedata align="center" width="450" scalefit="1" fileref="file:///mnt/perso/Development/funkj/dev/images/example1.jpg" format="JPG"/>
+						-->
+						<!--  OK ? 
+						<imagedata align="center" width="450" scalefit="1" fileref="file:///mnt/perso/Development/funkj/dev/images/example1.bmp" format="BMP"/>
+						-->
+						<imagedata align="center" width="450" scalefit="1" fileref="file:///mnt/perso/Development/funkj/dev/images/image-02.png" format="PNG"/>
+					</imageobject>
+				</mediaobject>
+			</figure>
+		</para>
+		<!--  
+		<para>
+			<figure>
+				<title>skip width on big image</title>
+				<mediaobject>
+					<imageobject>
+						<imagedata align="center" fileref="file:///mnt/perso/Development/funkj/dev/images/image-01.png" format="PNG"/>
+					</imageobject>
+				</mediaobject>
+			</figure>
+		</para>
+		
+		<para>
+			<figure>
+				<title>skip width on small image</title>
+				<mediaobject>
+					<imageobject>
+						<imagedata align="center" fileref="file:///mnt/perso/Development/funkj/dev/images/image-02.png" format="PNG"/>
+					</imageobject>
+				</mediaobject>
+			</figure>
+		</para>
+        -->
+	</section>
+    </chapter>
+	
+	<!--  
+	<appendix>
+		<title>Appendix A</title>
+		
+		<para>
+			content of appendix A			
+		</para>
+		
+		<section>
+			<title>Appendix A.1</title>
+			<para>
+				content of appendix A.1			
+			</para>
+		</section>
+	</appendix>
+	
+	<appendix>
+		<title>Appendix B</title>
+		
+		<para>
+			content of appendix B			
+		</para>
+	</appendix>
+	
+	
+	<para>
+		END OF THE DOCUMENT
+	</para>
+    -->
+</book>
